@@ -5,9 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cache;
+use App\Services\CacheService;
+use Carbon\Carbon;
 
 class WeatherController extends Controller
 {
+    protected $cacheService;
+
+    public function __construct(CacheService $cacheService)
+    {
+        $this->cacheService = $cacheService;
+    }
 
     public function getWeather( $city ) 
     {
@@ -26,6 +35,14 @@ class WeatherController extends Controller
                 $temperature = $data['main']['temp'];
                 $humidity = $data['main']['humidity'];
                 $windSpeed = $data['wind']['speed'];
+
+                // Add to Cache
+                $this->cacheService->put($city, [
+                    'weather' => $weather, 
+                    'temperature' => $this->toCelsius($temperature), 
+                    'humidity' => $humidity, 
+                    'wind_speed' => $windSpeed,
+                ], Carbon::now()->addMinutes(30));
 
                 return response()->json([
                     'city' => $city,
