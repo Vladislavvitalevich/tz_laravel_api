@@ -19,10 +19,12 @@ Route::group([
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
+
+        Route::get('/weather/{city}', 'Api\WeatherController@getWeather');
+        // Route::get('/subscribe', 'Api\SubscribeController@subscribe_city');
     });
 });
-
 Route::get('/cities', 'Api\CityController@index');
 
-Route::get('/weather/{city}', 'Api\WeatherController@getWeather');
+Route::get('/sub/{user}/{city}', 'Api\SubscribeController@subscribe_city');
 

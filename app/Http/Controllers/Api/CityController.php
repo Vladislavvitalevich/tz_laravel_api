@@ -17,11 +17,7 @@ class CityController extends Controller
     public function index()
     {
         $data = City::all();
-        $headers = [
-            'Content-Type' => 'application/json',
-            'X-Requested-With' => 'XMLHttpRequest'
-        ];
-
+        
         return CityResource::collection($data);
     }
 

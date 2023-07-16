@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         // App\Services\CacheService::class,
+        Laravel\Sanctum\SanctumServiceProvider::class,
         /*
          * Application Service Providers...
          */
