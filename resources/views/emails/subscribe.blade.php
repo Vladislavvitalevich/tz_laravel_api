@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Email</title>
+    <title>Subscribe Email</title>
 </head>
 <body>
-    <h1>Welcome to Our weather service!</h1>
+    <h1>Welcome </h1>
 
-    <p>Dear {{ $user_name }},</p>
+    <p>Dear {{ $data[user_name] }},</p>
     
-    <p>Thank you for subscribing to the weather in the city {{ $city_name }}.</p>
-    
-    <p>Your Website Team</p>
+    <p>You subscribed to the weather in the city of ' . {{ $data[user_name] }}</p>
 </body>
 </html>

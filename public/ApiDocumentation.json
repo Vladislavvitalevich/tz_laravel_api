@@ -1,0 +1,98 @@
+[
+    {
+        "API Documentation": {
+
+            
+            "Authentication": {
+                "POST /api/auth/login": {
+                "Description": "Log in a user.",
+                "Parameters": {
+                    "email": "User's email (string, required)",
+                    "password": "User's password (string, required)"
+                },
+                "Response": {
+                    "200 OK": "Successfully logged in.",
+                    "401 Unauthorized": "Invalid credentials."
+                }
+                },
+                "POST /api/auth/signup": {
+                "Description": "Register a new user.",
+                "Parameters": {
+                    "name": "User's name (string, required)",
+                    "email": "User's email (string, required)",
+                    "password": "User's password (string, required)",
+                    "password_confirmation": "User's password (string, required)"
+                    
+                },
+                "Response": {
+                    "201 Created": "User successfully registered.",
+                    "422 Unprocessable Entity": "Validation error."
+                    }
+                },
+                "GET /api/auth/logout": {
+                    "Description": "Log out the authenticated user.",
+                    "Response": {
+                        "200 OK": "User successfully logged out."   
+                    }
+                },
+                "GET /api/auth/user": {
+                    "Description": "Get the authenticated user's details.",
+                    "Response": {
+                        "200 OK": "User details returned.",
+                        "401 Unauthorized": "User not authenticated."
+                    }
+                }
+            },
+
+
+            "Weather": {
+                "GET /api/weather/{city}": {
+                    "Description": "Get weather information for a specific city.",
+                    "Parameters": {
+                        "city": "Name of the city (string, required)"
+                    },
+                    "Response": {
+                        "200 OK": "Weather information returned.",
+                        "404 Not Found": "City not found."
+                    }
+                }
+            },
+            
+            
+            "Cities": {
+                "GET /api/cities": {
+                    "Description": "Get a list of all cities.",
+                    "Response": {
+                        "200 OK": "List of cities returned."
+                    }
+                }
+            },
+            
+            
+            "Subscriptions": {
+                "GET /api/sub/{user_id}/{city_id}": {
+                    "Description": "Subscribe to receive weather updates for a specific city.",
+                    "Parameters": {
+                        "user_id": "ID of the user (integer, required)",
+                        "city_id": "ID of the city (integer, required)"
+                    },
+                    "Response": {
+                        "200 OK": "Subscription successful.",
+                        "404 Not Found": "User or city not found."
+                    }
+                },
+                "POST /api/unsub/{user_id}/{city_id}": {
+                    "Description": "Unsubscribe from receiving weather updates for a specific city.",
+                    "Parameters": {
+                        "user_id": "ID of the user (integer, required)",
+                        "city_id": "ID of the city (integer, required)"
+                    },
+                    "Response": {
+                        "200 OK": "Unsubscription successful.",
+                        "404 Not Found": "User or city not found."
+                    }
+                }
+            }
+        }
+    }
+]

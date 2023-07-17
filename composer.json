@@ -15,7 +15,6 @@
         "laminas/laminas-diactoros": "2.2",
         "laravel/framework": "^7.29",
         "laravel/passport": "~9.0",
-        "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {

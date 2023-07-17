@@ -10,7 +10,7 @@ class City extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Models\User', 'city_user', 'city_id', 'user_id');
     }
 
     public function weathers()
