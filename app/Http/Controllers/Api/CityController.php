@@ -20,8 +20,4 @@ class CityController extends Controller
         
         return CityResource::collection($data);
     }
-
-    public function a(){
-        return 1;
-    }
 }
