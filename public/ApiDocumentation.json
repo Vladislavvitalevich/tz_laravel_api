@@ -33,6 +33,9 @@
                     "Description": "Log out the authenticated user.",
                     "Response": {
                         "200 OK": "User successfully logged out."   
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 },
                 "GET /api/auth/user": {
@@ -40,13 +43,16 @@
                     "Response": {
                         "200 OK": "User details returned.",
                         "401 Unauthorized": "User not authenticated."
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 }
             },
 
 
             "Weather": {
-                "GET /api/weather/{city}": {
+                "GET api/city/{city}/weather": {
                     "Description": "Get weather information for a specific city.",
                     "Parameters": {
                         "city": "Name of the city (string, required)"
@@ -54,6 +60,9 @@
                     "Response": {
                         "200 OK": "Weather information returned.",
                         "404 Not Found": "City not found."
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 }
             },
@@ -64,32 +73,41 @@
                     "Description": "Get a list of all cities.",
                     "Response": {
                         "200 OK": "List of cities returned."
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 }
             },
             
             
             "Subscriptions": {
-                "GET /api/sub/{user_id}/{city_id}": {
+                "GET /api/sub/{user}/{city": {
                     "Description": "Subscribe to receive weather updates for a specific city.",
                     "Parameters": {
-                        "user_id": "ID of the user (integer, required)",
-                        "city_id": "ID of the city (integer, required)"
+                        "user": "ID of the user (integer, required)",
+                        "city": "ID of the city (integer, required)"
                     },
                     "Response": {
                         "200 OK": "Subscription successful.",
                         "404 Not Found": "User or city not found."
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 },
-                "POST /api/unsub/{user_id}/{city_id}": {
+                "POST /api/unsub/{user}/{city}": {
                     "Description": "Unsubscribe from receiving weather updates for a specific city.",
                     "Parameters": {
-                        "user_id": "ID of the user (integer, required)",
-                        "city_id": "ID of the city (integer, required)"
+                        "user": "ID of the user (integer, required)",
+                        "city": "ID of the city (integer, required)"
                     },
                     "Response": {
                         "200 OK": "Unsubscription successful.",
                         "404 Not Found": "User or city not found."
+                    },
+                    "Token" : {
+                        "Bearer Token": "Token"
                     }
                 }
             }
